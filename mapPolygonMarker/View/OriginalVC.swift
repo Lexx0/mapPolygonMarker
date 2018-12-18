@@ -33,7 +33,7 @@ class OriginalVC: UIViewController {
         self.view.sendSubviewToBack(imageView)
         
         self.proceedBtn.backgroundColor = .lightGray
-        self.proceedBtn.layer.cornerRadius = 5
+        self.proceedBtn.layer.cornerRadius = 12
         self.proceedBtn.layer.borderWidth = 1
         self.proceedBtn.layer.borderColor = UIColor.darkGray.cgColor
         

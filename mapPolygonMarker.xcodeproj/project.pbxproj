@@ -11,6 +11,7 @@
 		BC9231E021C93964000DF636 /* MapMarkerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231DF21C93964000DF636 /* MapMarkerVC.swift */; };
 		BC9231E221C93975000DF636 /* OriginalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231E121C93975000DF636 /* OriginalVM.swift */; };
 		BC9231E421C93987000DF636 /* MapMarkerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231E321C93987000DF636 /* MapMarkerVM.swift */; };
+		BC9231E621C94919000DF636 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231E521C94919000DF636 /* Constants.swift */; };
 		BCECC5FE21C93277008D2E25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECC5FD21C93277008D2E25 /* AppDelegate.swift */; };
 		BCECC60321C93277008D2E25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCECC60121C93277008D2E25 /* Main.storyboard */; };
 		BCECC60621C93277008D2E25 /* mapPolygonMarker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BCECC60421C93277008D2E25 /* mapPolygonMarker.xcdatamodeld */; };
@@ -27,6 +28,7 @@
 		BC9231DF21C93964000DF636 /* MapMarkerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerVC.swift; sourceTree = "<group>"; };
 		BC9231E121C93975000DF636 /* OriginalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalVM.swift; sourceTree = "<group>"; };
 		BC9231E321C93987000DF636 /* MapMarkerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerVM.swift; sourceTree = "<group>"; };
+		BC9231E521C94919000DF636 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BCECC5FA21C93277008D2E25 /* mapPolygonMarker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapPolygonMarker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCECC5FD21C93277008D2E25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCECC60221C93277008D2E25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		BCECC61621C93839008D2E25 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BC9231E521C94919000DF636 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				BC9231E421C93987000DF636 /* MapMarkerVM.swift in Sources */,
 				BC9231E021C93964000DF636 /* MapMarkerVC.swift in Sources */,
 				BC9231DE21C9393E000DF636 /* OriginalVC.swift in Sources */,
+				BC9231E621C94919000DF636 /* Constants.swift in Sources */,
 				BCECC5FE21C93277008D2E25 /* AppDelegate.swift in Sources */,
 				BC9231E221C93975000DF636 /* OriginalVM.swift in Sources */,
 			);
