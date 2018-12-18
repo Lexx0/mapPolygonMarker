@@ -20,6 +20,8 @@ class MapMarkerVC: UIViewController {
     var locationManager: CLLocationManager!
     var locations: [CLLocation] = []
     
+    var markerLocations: [CLLocation] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,6 +89,14 @@ extension MapMarkerVC: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
-        
+        let marker = GMSMarker(position: coordinate)
+        marker.icon = UIImage(named: "location-pin")
+        marker.map = self.view as! GMSMapView
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        print("this marker exists. Show options")
+        // load nib ??
+        return true
     }
 }
