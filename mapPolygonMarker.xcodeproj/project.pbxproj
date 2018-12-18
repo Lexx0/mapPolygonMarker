@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC9231DE21C9393E000DF636 /* OriginalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231DD21C9393E000DF636 /* OriginalVC.swift */; };
+		BC9231E021C93964000DF636 /* MapMarkerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231DF21C93964000DF636 /* MapMarkerVC.swift */; };
+		BC9231E221C93975000DF636 /* OriginalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231E121C93975000DF636 /* OriginalVM.swift */; };
+		BC9231E421C93987000DF636 /* MapMarkerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231E321C93987000DF636 /* MapMarkerVM.swift */; };
 		BCECC5FE21C93277008D2E25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECC5FD21C93277008D2E25 /* AppDelegate.swift */; };
-		BCECC60021C93277008D2E25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECC5FF21C93277008D2E25 /* ViewController.swift */; };
 		BCECC60321C93277008D2E25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCECC60121C93277008D2E25 /* Main.storyboard */; };
 		BCECC60621C93277008D2E25 /* mapPolygonMarker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BCECC60421C93277008D2E25 /* mapPolygonMarker.xcdatamodeld */; };
 		BCECC60821C9327B008D2E25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCECC60721C9327B008D2E25 /* Assets.xcassets */; };
 		BCECC60B21C9327B008D2E25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCECC60921C9327B008D2E25 /* LaunchScreen.storyboard */; };
+		DF9F9D04B4A72E421DC596F7 /* Pods_mapPolygonMarker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0727620C1CA6F4CEFF947027 /* Pods_mapPolygonMarker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0727620C1CA6F4CEFF947027 /* Pods_mapPolygonMarker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mapPolygonMarker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		734FEB4C72CC9393A03020A8 /* Pods-mapPolygonMarker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapPolygonMarker.release.xcconfig"; path = "Pods/Target Support Files/Pods-mapPolygonMarker/Pods-mapPolygonMarker.release.xcconfig"; sourceTree = "<group>"; };
+		846732EDAFE309381148A534 /* Pods-mapPolygonMarker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapPolygonMarker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mapPolygonMarker/Pods-mapPolygonMarker.debug.xcconfig"; sourceTree = "<group>"; };
+		BC9231DD21C9393E000DF636 /* OriginalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalVC.swift; sourceTree = "<group>"; };
+		BC9231DF21C93964000DF636 /* MapMarkerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerVC.swift; sourceTree = "<group>"; };
+		BC9231E121C93975000DF636 /* OriginalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalVM.swift; sourceTree = "<group>"; };
+		BC9231E321C93987000DF636 /* MapMarkerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerVM.swift; sourceTree = "<group>"; };
 		BCECC5FA21C93277008D2E25 /* mapPolygonMarker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapPolygonMarker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCECC5FD21C93277008D2E25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BCECC5FF21C93277008D2E25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BCECC60221C93277008D2E25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCECC60521C93277008D2E25 /* mapPolygonMarker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mapPolygonMarker.xcdatamodel; sourceTree = "<group>"; };
 		BCECC60721C9327B008D2E25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF9F9D04B4A72E421DC596F7 /* Pods_mapPolygonMarker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1865EB4C9578AA0BB54871EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				846732EDAFE309381148A534 /* Pods-mapPolygonMarker.debug.xcconfig */,
+				734FEB4C72CC9393A03020A8 /* Pods-mapPolygonMarker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		388644877D68A5BEA07F9D85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0727620C1CA6F4CEFF947027 /* Pods_mapPolygonMarker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BCECC5F121C93277008D2E25 = {
 			isa = PBXGroup;
 			children = (
 				BCECC5FC21C93277008D2E25 /* mapPolygonMarker */,
 				BCECC5FB21C93277008D2E25 /* Products */,
+				1865EB4C9578AA0BB54871EF /* Pods */,
+				388644877D68A5BEA07F9D85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +86,50 @@
 		BCECC5FC21C93277008D2E25 /* mapPolygonMarker */ = {
 			isa = PBXGroup;
 			children = (
+				BCECC61621C93839008D2E25 /* Utils */,
+				BCECC61521C93831008D2E25 /* ViewModel */,
+				BCECC61421C93829008D2E25 /* View */,
+				BCECC61221C9380A008D2E25 /* Model */,
 				BCECC5FD21C93277008D2E25 /* AppDelegate.swift */,
-				BCECC5FF21C93277008D2E25 /* ViewController.swift */,
-				BCECC60121C93277008D2E25 /* Main.storyboard */,
 				BCECC60721C9327B008D2E25 /* Assets.xcassets */,
 				BCECC60921C9327B008D2E25 /* LaunchScreen.storyboard */,
 				BCECC60C21C9327B008D2E25 /* Info.plist */,
 				BCECC60421C93277008D2E25 /* mapPolygonMarker.xcdatamodeld */,
 			);
 			path = mapPolygonMarker;
+			sourceTree = "<group>";
+		};
+		BCECC61221C9380A008D2E25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BCECC61421C93829008D2E25 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCECC60121C93277008D2E25 /* Main.storyboard */,
+				BC9231DD21C9393E000DF636 /* OriginalVC.swift */,
+				BC9231DF21C93964000DF636 /* MapMarkerVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BCECC61521C93831008D2E25 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BC9231E121C93975000DF636 /* OriginalVM.swift */,
+				BC9231E321C93987000DF636 /* MapMarkerVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BCECC61621C93839008D2E25 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCECC60F21C9327B008D2E25 /* Build configuration list for PBXNativeTarget "mapPolygonMarker" */;
 			buildPhases = (
+				DA55014BCA343EEDBD2810C2 /* [CP] Check Pods Manifest.lock */,
 				BCECC5F621C93277008D2E25 /* Sources */,
 				BCECC5F721C93277008D2E25 /* Frameworks */,
 				BCECC5F821C93277008D2E25 /* Resources */,
+				46AEF7A74FD98064CFEF338D /* [CP] Embed Pods Frameworks */,
+				4413C11176DA845871350176 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,14 +201,104 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4413C11176DA845871350176 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mapPolygonMarker/Pods-mapPolygonMarker-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mapPolygonMarker/Pods-mapPolygonMarker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46AEF7A74FD98064CFEF338D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mapPolygonMarker/Pods-mapPolygonMarker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mapPolygonMarker/Pods-mapPolygonMarker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA55014BCA343EEDBD2810C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mapPolygonMarker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BCECC5F621C93277008D2E25 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BCECC60621C93277008D2E25 /* mapPolygonMarker.xcdatamodeld in Sources */,
-				BCECC60021C93277008D2E25 /* ViewController.swift in Sources */,
+				BC9231E421C93987000DF636 /* MapMarkerVM.swift in Sources */,
+				BC9231E021C93964000DF636 /* MapMarkerVC.swift in Sources */,
+				BC9231DE21C9393E000DF636 /* OriginalVC.swift in Sources */,
 				BCECC5FE21C93277008D2E25 /* AppDelegate.swift in Sources */,
+				BC9231E221C93975000DF636 /* OriginalVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +442,7 @@
 		};
 		BCECC61021C9327B008D2E25 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 846732EDAFE309381148A534 /* Pods-mapPolygonMarker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -301,6 +460,7 @@
 		};
 		BCECC61121C9327B008D2E25 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 734FEB4C72CC9393A03020A8 /* Pods-mapPolygonMarker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

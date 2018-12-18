@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapMarkerVC.swift
 //  mapPolygonMarker
 //
 //  Created by admin2 on 12/18/18.
@@ -8,13 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MapMarkerVC: UIViewController {
 
+    var vm: MapMarkerVM!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        initialSetup()
     }
-
-
+    
+    func initialSetup() {
+        
+    }
 }
-
