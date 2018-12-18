@@ -48,6 +48,8 @@ class MapMarkerVC: UIViewController {
         Floaty.global.button.addItem("View List", icon: UIImage(named: "view-list")) { tap in
             print("List Tapped")
         }
+        Floaty.global.button.openAnimationType = .slideLeft
+        Floaty.global.button.hasShadow = true
         
         Floaty.global.show()
 
@@ -85,5 +87,6 @@ extension MapMarkerVC: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
+        
     }
 }
