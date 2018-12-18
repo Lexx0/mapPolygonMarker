@@ -44,12 +44,19 @@ class MapMarkerVC: UIViewController {
         Floaty.global.button.addItem("Draw PolyGone", icon: UIImage(named: "document-add")) { tap in
             print("Draw Tapped")
         }
+        
         Floaty.global.button.addItem("Clear Markers", icon: UIImage(named: "wiping")) { tap in
             print("Clear Tapped")
+            guard let mapView = self.view as? GMSMapView else  {
+                return
+            }
+            mapView.clear()
         }
+        
         Floaty.global.button.addItem("View List", icon: UIImage(named: "view-list")) { tap in
             print("List Tapped")
         }
+        
         Floaty.global.button.openAnimationType = .slideLeft
         Floaty.global.button.hasShadow = true
         
@@ -97,6 +104,7 @@ extension MapMarkerVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         print("this marker exists. Show options")
         // load nib ??
+        marker.map = nil
         return true
     }
 }
