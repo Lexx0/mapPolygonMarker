@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Floaty
 import GoogleMaps
 import CoreLocation
 
@@ -14,17 +15,50 @@ class MapMarkerVC: UIViewController {
 
     var vm: MapMarkerVM!
     var selectedMapType: GMSMapViewType = .normal
-    let locationManager = CLLocationManager()
+//    var camera: GMSCameraPosition!
+    
+    var locationManager: CLLocationManager!
+    var locations: [CLLocation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initialSetup()
+        locationSetup()
+        floatySetup()
+        gmapSetup()
     }
     
-    func initialSetup() {
+    func locationSetup() {
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.distanceFilter = 50
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+    }
+    
+    func floatySetup() {
         
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        Floaty.global.button.addItem("Draw PolyGone", icon: UIImage(named: "document-add")) { tap in
+            print("Draw Tapped")
+        }
+        Floaty.global.button.addItem("Clear Markers", icon: UIImage(named: "wiping")) { tap in
+            print("Clear Tapped")
+        }
+        Floaty.global.button.addItem("View List", icon: UIImage(named: "view-list")) { tap in
+            print("List Tapped")
+        }
+        
+        Floaty.global.show()
+
+    }
+    
+    func gmapSetup() {
+        
+        print(self.locations)
+        let camera = GMSCameraPosition.camera(withLatitude: self.locations.first?.coordinate.latitude ?? 49.0391,
+                                              longitude: self.locations.first?.coordinate.longitude ?? 28.1086,
+                                              zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         
         mapView.mapType = self.selectedMapType
@@ -33,12 +67,23 @@ class MapMarkerVC: UIViewController {
         let mapInsets = UIEdgeInsets(top: 80.0, left: 0.0, bottom: 45.0, right: 0.0)
         mapView.padding = mapInsets
         
-//        locationManager.distanceFilter = 1000
-//        locationManager.delegate = self as! 
-//        locationManager.requestWhenInUseAuthorization()
-        
-
-        
+        mapView.delegate = self
         self.view = mapView
+        
+    }
+}
+
+extension MapMarkerVC: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location: CLLocation = locations.first!
+        self.locations.append(location)
+    }
+}
+
+extension MapMarkerVC: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
     }
 }
