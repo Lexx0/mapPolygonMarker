@@ -18,7 +18,6 @@ class MapMarkerVC: UIViewController {
     var vm: MapMarkerVM!
     var selectedMapType: GMSMapViewType = .normal
     
-//    var reportViewOrigin: CGFloat = self.view.frame.height*0.1 ?? (self.view.origin.y-100)
     
     var locationManager: CLLocationManager!
     
@@ -72,9 +71,7 @@ class MapMarkerVC: UIViewController {
             if canCreateReport == true {
                 
                 self.awakeDialog()
-                
-//                    Floaty.global.hide()
-//                self.vm.createReport(path)
+        
             }
             
             let rectangle = GMSPolyline(path: path)
@@ -139,12 +136,10 @@ class MapMarkerVC: UIViewController {
             }.disposed(by: self.vm.bag)
         
         self.view.addSubview(dialogView)
-//        view RXSwift
+
     }
     
     func createReport() {
-        
-//        var myOrigin: CGFloat = self.view.frame.height*0.1 ?? self.view.frame.origin.y
         
         let reportForm = UINib(nibName: "ReportForm", bundle: nil)
             .instantiate(withOwner: self, options: nil)
@@ -152,15 +147,10 @@ class MapMarkerVC: UIViewController {
         
         reportForm.frame.size.width = self.view.frame.width*0.8
         reportForm.frame.size.height = self.view.frame.height*0.8
-//        reportForm.frame.origin.y = self.reportViewOrigin //self.view.frame.height*0.1
-//        reportForm.frame.origin.y = self.view.frame.height*0.1 ?? self.view.frame.origin.y
         reportForm.frame.origin.y = self.view.frame.height*0.1
         
         reportForm.frame.origin.x = self.view.frame.width*0.1
         
-//        self.vm.storedImage.asObservable.subscribe { _ in
-//            reportForm.takeAphotoBtn
-//        }.disposed(by: self.vm.bag)
         self.vm.storedImage.asObservable().subscribe{ imageChange in
             reportForm.takeAphotoBtn.setImage(self.vm.storedImage.value, for: .normal)
             
@@ -198,16 +188,6 @@ class MapMarkerVC: UIViewController {
                 
         }.disposed(by: self.vm.bag)
         
-//        reportForm.rx.tap.subscribe { _ in
-//            reportForm.datePicker.isHidden = true
-//            reportForm.datePicker.isUserInteractionEnabled = false
-//
-//            reportForm.saveBtn.isHidden = false
-//            reportForm.saveBtn.isUserInteractionEnabled = true
-//            reportForm.cancelBtn.isHidden = false
-//            reportForm.cancelBtn.isUserInteractionEnabled = true
-//        }.disposed(by: self.vm.bag)
-        
         reportForm.datePicker.rx.value.bind { [weak self] _ in
             
             let dateFormatter = DateFormatter()
@@ -229,24 +209,12 @@ class MapMarkerVC: UIViewController {
         
         
         reportForm.descrInput.rx.didBeginEditing.subscribe({ n in
-//            reportForm.descrInput.text = n
-
             reportForm.frame.origin.y -= 160
             reportForm.descrInput.text = ""
         }).disposed(by: self.vm.bag)
         
-//        reportForm.descrInput.rx.didBeginEditing
-//            .map {
-//                return $0
-//            }
-//            .subscribe { _ in
-////        reportForm.descrInput.rx.didBeginEditing.subscribe { _ in
-//            reportForm.frame.origin.y -= 140
-////            reportForm.descrInput.text = ""
-//        }.disposed(by: self.vm.bag)
         
         reportForm.descrInput.rx.didEndEditing.subscribe { _ in
-//            reportForm.frame.origin.y = !reportForm.frame.origin.y
             reportForm.frame.origin.y += 160
         }.disposed(by: self.vm.bag)
         
