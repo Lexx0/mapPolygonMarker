@@ -25,10 +25,10 @@
                     <state key="normal" image="take-a-photo"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHK-g0-84Y">
-                    <rect key="frame" x="202.5" y="52" width="16" height="16"/>
+                    <rect key="frame" x="223" y="52" width="24" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="501-vi-KP2"/>
-                        <constraint firstAttribute="width" constant="16" id="b6r-cB-xTN"/>
+                        <constraint firstAttribute="height" constant="24" id="501-vi-KP2"/>
+                        <constraint firstAttribute="width" constant="24" id="b6r-cB-xTN"/>
                     </constraints>
                     <state key="normal" image="closeIcon"/>
                 </button>
@@ -78,15 +78,15 @@
                 <constraint firstItem="7wo-T7-QZt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="YaU-gv-ucy"/>
                 <constraint firstItem="mT3-QM-gCl" firstAttribute="top" secondItem="ZOW-IC-GTX" secondAttribute="bottom" constant="42" id="bnB-uq-lbD"/>
                 <constraint firstItem="qq4-Eo-I9Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f2e-DO-TkZ"/>
+                <constraint firstItem="UHK-g0-84Y" firstAttribute="top" secondItem="7wo-T7-QZt" secondAttribute="top" id="fbt-re-ge5"/>
                 <constraint firstItem="mT3-QM-gCl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="42" id="g2C-Fg-30O"/>
                 <constraint firstItem="ZOW-IC-GTX" firstAttribute="top" secondItem="7wo-T7-QZt" secondAttribute="bottom" constant="32" id="hR4-mN-jvY"/>
                 <constraint firstItem="9fy-Wg-Qtr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hVu-Q2-wbd"/>
                 <constraint firstItem="ZOW-IC-GTX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="42" id="iZG-cM-YqH"/>
                 <constraint firstItem="7wo-T7-QZt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ijd-NM-wYy"/>
-                <constraint firstItem="UHK-g0-84Y" firstAttribute="top" secondItem="7wo-T7-QZt" secondAttribute="top" id="ljn-5K-roe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZOW-IC-GTX" secondAttribute="trailing" constant="42" id="oBG-te-pa8"/>
-                <constraint firstItem="UHK-g0-84Y" firstAttribute="trailing" secondItem="7wo-T7-QZt" secondAttribute="trailing" id="rT5-is-cLO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9fy-Wg-Qtr" secondAttribute="bottom" constant="36" id="v2P-2e-okF"/>
+                <constraint firstItem="UHK-g0-84Y" firstAttribute="leading" secondItem="7wo-T7-QZt" secondAttribute="trailing" constant="4.5" id="zaO-BW-RZL"/>
                 <constraint firstItem="0eT-p4-6Ok" firstAttribute="top" secondItem="mT3-QM-gCl" secondAttribute="bottom" constant="36" id="zvv-Eq-2hx"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

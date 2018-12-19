@@ -164,8 +164,14 @@ class MapMarkerVC: UIViewController {
         self.vm.storedImage.asObservable().subscribe{ imageChange in
             reportForm.takeAphotoBtn.setImage(self.vm.storedImage.value, for: .normal)
             
-            reportForm.cancelImg.isHidden = false
-            reportForm.cancelImg.isUserInteractionEnabled = true
+            if self.vm.storedImage.value == UIImage(named: "take-a-photo") {
+                reportForm.cancelImg.isHidden = true
+                reportForm.cancelImg.isUserInteractionEnabled = false
+            } else {
+                reportForm.cancelImg.isHidden = false
+                reportForm.cancelImg.isUserInteractionEnabled = true
+            }
+            
         }.disposed(by: self.vm.bag)
         
         reportForm.cancelImg.rx.tap.subscribe { _ in
