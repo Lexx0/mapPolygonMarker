@@ -10,16 +10,17 @@ import UIKit
 import Floaty
 import GoogleMaps
 import CoreLocation
+import RxCocoa
+import RxSwift
 
 class MapMarkerVC: UIViewController {
 
     var vm: MapMarkerVM!
     var selectedMapType: GMSMapViewType = .normal
-//    var camera: GMSCameraPosition!
     
     var locationManager: CLLocationManager!
-    var locations: [CLLocation] = []
     
+    var locations: [CLLocation] = []
     var markerLocations: [CLLocation] = []
     
     override func viewDidLoad() {
@@ -39,17 +40,43 @@ class MapMarkerVC: UIViewController {
         locationManager.delegate = self
     }
     
+    
     func floatySetup() {
-        
         Floaty.global.button.addItem("Draw PolyGone", icon: UIImage(named: "document-add")) { tap in
-            print("Draw Tapped")
+            
+            guard let mapView = self.view as? GMSMapView else  { return }
+            var currentIndex = 0
+            
+            let path = GMSMutablePath()
+            
+            for item in self.markerLocations {
+                let tempItem = item
+                path.add(tempItem.coordinate)
+                currentIndex += 1
+                
+                if currentIndex == self.markerLocations.count {
+                    let firstItem = self.markerLocations[0]
+                    path.add(firstItem.coordinate)
+                }
+            }
+            
+            let canCreateReport = self.vm.checkIfUserWithinLocation(self.locations.last!, polygon: path)
+            
+            if canCreateReport == true {
+                
+                self.awakeDialog()
+                
+//                self.vm.createReport(path)
+            }
+            
+            let rectangle = GMSPolyline(path: path)
+        
+            rectangle.map = mapView
         }
         
         Floaty.global.button.addItem("Clear Markers", icon: UIImage(named: "wiping")) { tap in
-            print("Clear Tapped")
-            guard let mapView = self.view as? GMSMapView else  {
-                return
-            }
+            guard let mapView = self.view as? GMSMapView else  { return }
+            self.markerLocations.removeAll()
             mapView.clear()
         }
         
@@ -61,17 +88,14 @@ class MapMarkerVC: UIViewController {
         Floaty.global.button.hasShadow = true
         
         Floaty.global.show()
-
     }
     
     func gmapSetup() {
         
-        print(self.locations)
         let camera = GMSCameraPosition.camera(withLatitude: self.locations.first?.coordinate.latitude ?? 49.0391,
                                               longitude: self.locations.first?.coordinate.longitude ?? 28.1086,
                                               zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        
         mapView.mapType = self.selectedMapType
         mapView.isMyLocationEnabled = true
         
@@ -82,7 +106,34 @@ class MapMarkerVC: UIViewController {
         self.view = mapView
         
     }
+    
+    func awakeDialog() {
+        
+        let dialogView = UINib(nibName: "ShouldCreateDialogView", bundle: nil)
+            .instantiate(withOwner: self.view, options: nil)
+            .first as! ShouldCreateDialogView
+        
+        dialogView.frame.size.width = self.view.frame.width*0.7
+        dialogView.frame.origin.y = (self.view.frame.height*0.5) - 70
+        dialogView.frame.origin.x = dialogView.frame.width*0.2
+        
+        dialogView.okBtn.rx.tap
+            .subscribe { tap in
+                print("TAAAP!")
+        }.disposed(by: self.vm.bag)
+        
+        dialogView.noBtn.rx.tap
+            .subscribe { tap in
+                dialogView.removeFromSuperview()
+                
+            }.disposed(by: self.vm.bag)
+        
+        self.view.addSubview(dialogView)
+//        view RXSwift
+    }
+    
 }
+
 
 extension MapMarkerVC: CLLocationManagerDelegate {
     
@@ -92,18 +143,38 @@ extension MapMarkerVC: CLLocationManagerDelegate {
     }
 }
 
+
+
 extension MapMarkerVC: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
-        let marker = GMSMarker(position: coordinate)
-        marker.icon = UIImage(named: "location-pin")
-        marker.map = self.view as! GMSMapView
+        
+        guard let mapView = self.view as? GMSMapView else {
+            return
+        }
+            let marker = GMSMarker(position: coordinate)
+            marker.icon = UIImage(named: "location-pin")
+            marker.map = mapView
+        
+            let locationNew = CLLocation(latitude: coordinate.latitude,
+                                         longitude: coordinate.longitude)
+            self.markerLocations.append(locationNew)
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        print("this marker exists. Show options")
-        // load nib ??
+        
+        // load nib with action options ??
+        
+        var index = 0
+
+        for item in self.markerLocations {
+            if (item.coordinate.latitude == marker.position.latitude) && (item.coordinate.longitude == marker.position.longitude) {
+                self.markerLocations.remove(at: index)
+            }
+            index += 1
+        }
+        
         marker.map = nil
         return true
     }
