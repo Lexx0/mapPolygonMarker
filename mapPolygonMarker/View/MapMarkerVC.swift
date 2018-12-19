@@ -66,9 +66,7 @@ class MapMarkerVC: UIViewController {
                 
                 self.awakeDialog()
                 
-                defer {
-                    Floaty.global.hide()
-                }
+//                    Floaty.global.hide()
 //                self.vm.createReport(path)
             }
             
@@ -116,20 +114,19 @@ class MapMarkerVC: UIViewController {
             .instantiate(withOwner: self.view, options: nil)
             .first as! ShouldCreateDialogView
         
-        dialogView.frame.size.width = self.view.frame.width*0.85
+        dialogView.frame.size.width = self.view.frame.width*0.7
         dialogView.frame.origin.y = (self.view.frame.height*0.5) - 70
-        dialogView.frame.origin.x = dialogView.frame.width*0.1
+        dialogView.frame.origin.x = dialogView.frame.width*0.2
         
         dialogView.okBtn.rx.tap
             .subscribe { tap in
                 self.createReport()
-                Floaty.global.show()
+                Floaty.global.hide()
                 dialogView.removeFromSuperview()
         }.disposed(by: self.vm.bag)
         
         dialogView.noBtn.rx.tap
             .subscribe { tap in
-                Floaty.global.show()
                 dialogView.removeFromSuperview()
                 
             }.disposed(by: self.vm.bag)
@@ -144,10 +141,10 @@ class MapMarkerVC: UIViewController {
             .instantiate(withOwner: self, options: nil)
             .first as! ReportForm
         
-        reportForm.frame.size.width = self.view.frame.width*0.8
-        reportForm.frame.size.height = self.view.frame.height*0.8
-        reportForm.frame.origin.y = self.view.frame.height*0.1
-        reportForm.frame.origin.x = self.view.frame.width*0.1
+        reportForm.frame.size.width = self.view.frame.width*0.85
+        reportForm.frame.size.height = self.view.frame.height*0.85
+        reportForm.frame.origin.y = self.view.frame.height*0.15
+        reportForm.frame.origin.x = self.view.frame.width*0.15
         
         reportForm.takeAphotoBtn.rx.tap
             .subscribe { tap in
@@ -187,9 +184,12 @@ class MapMarkerVC: UIViewController {
         
         reportForm.saveBtn.rx.tap.subscribe { tap in
             self.vm.saveModel()
+            Floaty.global.show()
+            reportForm.removeFromSuperview()
         }.disposed(by: self.vm.bag)
         
         reportForm.cancelBtn.rx.tap.subscribe { tap in
+            Floaty.global.show()
             reportForm.removeFromSuperview()
         }.disposed(by: self.vm.bag)
         

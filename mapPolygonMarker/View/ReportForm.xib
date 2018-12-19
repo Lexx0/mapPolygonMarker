@@ -42,7 +42,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="введите описание" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mT3-QM-gCl">
-                    <rect key="frame" x="42" y="230" width="289" height="159"/>
+                    <rect key="frame" x="42" y="230" width="289" height="225"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -87,7 +87,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZOW-IC-GTX" secondAttribute="trailing" constant="42" id="oBG-te-pa8"/>
                 <constraint firstItem="UHK-g0-84Y" firstAttribute="trailing" secondItem="7wo-T7-QZt" secondAttribute="trailing" id="rT5-is-cLO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9fy-Wg-Qtr" secondAttribute="bottom" constant="16" id="v2P-2e-okF"/>
-                <constraint firstItem="qq4-Eo-I9Z" firstAttribute="top" secondItem="mT3-QM-gCl" secondAttribute="bottom" constant="42" id="x7v-wN-QTs"/>
+                <constraint firstItem="0eT-p4-6Ok" firstAttribute="top" secondItem="mT3-QM-gCl" secondAttribute="bottom" constant="76" id="zvv-Eq-2hx"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
