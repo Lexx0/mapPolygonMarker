@@ -120,6 +120,7 @@ class MapMarkerVC: UIViewController {
         dialogView.okBtn.rx.tap
             .subscribe { tap in
                 self.createReport()
+                dialogView.removeFromSuperview()
         }.disposed(by: self.vm.bag)
         
         dialogView.noBtn.rx.tap
@@ -148,17 +149,26 @@ class MapMarkerVC: UIViewController {
                 self.vm.presentActionSheet(vc: self)
         }.disposed(by: self.vm.bag)
         
-//        reportForm.dateInPut.inputView = reportForm.datePicker
-        reportForm.dateInPut.rx.controlEvent(UIControlEvents.editingDidBegin)
+        reportForm.dateInPut.rx.controlEvent(UIControlEvents.touchUpInside)
             .subscribe{ _ in
-//                reportForm.dateInPut.rx.textInput = reportForm.datePicker
-                var dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd MMM yyyy"
-                reportForm.dateInPut.text = dateFormatter.string(from: reportForm.datePicker.date)
+
+                reportForm.datePicker.isHidden = !reportForm.datePicker.isHidden
+                reportForm.datePicker.isUserInteractionEnabled = !reportForm.datePicker.isUserInteractionEnabled
                 
-            }.disposed(by: self.vm.bag)
-//        UIControlEvents
-//            .disposed(by: self.vm.bag)
+                reportForm.saveBtn.isHidden = !reportForm.saveBtn.isHidden
+                reportForm.saveBtn.isUserInteractionEnabled = !reportForm.saveBtn.isUserInteractionEnabled
+                reportForm.cancelBtn.isHidden = !reportForm.cancelBtn.isHidden
+                reportForm.cancelBtn.isUserInteractionEnabled = !reportForm.cancelBtn.isUserInteractionEnabled
+                
+        }.disposed(by: self.vm.bag)
+        
+        reportForm.datePicker.rx.value.bind { [weak self] _ in
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            reportForm.dateInPut.text = dateFormatter.string(from: reportForm.datePicker.date)
+            
+        }.disposed(by: self.vm.bag)
         
         reportForm.saveBtn.rx.tap.subscribe { tap in
             self.vm.saveModel()
@@ -166,7 +176,7 @@ class MapMarkerVC: UIViewController {
         
         reportForm.cancelBtn.rx.tap.subscribe { tap in
             reportForm.removeFromSuperview()
-        }
+        }.disposed(by: self.vm.bag)
         
         self.view.addSubview(reportForm)
     }

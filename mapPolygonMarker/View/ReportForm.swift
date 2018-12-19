@@ -22,6 +22,10 @@ class ReportForm: UIView {
     override func awakeFromNib() {
         self.takeAphotoBtn.setImage(UIImage(named: "take-a-photo"), for: .normal)
         
+        initialSetup()
+    }
+    
+    func initialSetup() {
         self.saveBtn.backgroundColor = .blue
         self.saveBtn.setTitle("СОХРАНИТЬ", for: .normal)
         self.saveBtn.tintColor = .white
@@ -33,15 +37,16 @@ class ReportForm: UIView {
         self.cancelBtn.backgroundColor = .gray
         
         self.cancelImg.isHidden = true
-        self.cancelImg.isUserInteractionEnabled = false 
+        self.cancelImg.isUserInteractionEnabled = false
         self.datePicker.isHidden = true
         self.datePicker.isUserInteractionEnabled = false
         
-        self.dateInPut.inputView = self.datePicker
-//        var dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "dd MMM yyyy"
+        //        self.dateInPut.inputView = self.datePicker
+        //        var dateFormatter = NSDateFormatter()
+        //        dateFormatter.dateFormat = "dd MMM yyyy"
         
+        self.datePicker.datePickerMode = .date
         self.datePicker.minimumDate = NSCalendar.current.date(byAdding: .day, value: -7, to: Date())
-        self.datePicker.maximumDate = Date()
+        //        self.datePicker.maximumDate = Date()
     }
 }
