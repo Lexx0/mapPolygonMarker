@@ -66,6 +66,9 @@ class MapMarkerVC: UIViewController {
                 
                 self.awakeDialog()
                 
+                defer {
+                    Floaty.global.hide()
+                }
 //                self.vm.createReport(path)
             }
             
@@ -113,18 +116,20 @@ class MapMarkerVC: UIViewController {
             .instantiate(withOwner: self.view, options: nil)
             .first as! ShouldCreateDialogView
         
-        dialogView.frame.size.width = self.view.frame.width*0.7
+        dialogView.frame.size.width = self.view.frame.width*0.85
         dialogView.frame.origin.y = (self.view.frame.height*0.5) - 70
-        dialogView.frame.origin.x = dialogView.frame.width*0.2
+        dialogView.frame.origin.x = dialogView.frame.width*0.1
         
         dialogView.okBtn.rx.tap
             .subscribe { tap in
                 self.createReport()
+                Floaty.global.show()
                 dialogView.removeFromSuperview()
         }.disposed(by: self.vm.bag)
         
         dialogView.noBtn.rx.tap
             .subscribe { tap in
+                Floaty.global.show()
                 dialogView.removeFromSuperview()
                 
             }.disposed(by: self.vm.bag)
@@ -161,6 +166,16 @@ class MapMarkerVC: UIViewController {
                 reportForm.cancelBtn.isUserInteractionEnabled = !reportForm.cancelBtn.isUserInteractionEnabled
                 
         }.disposed(by: self.vm.bag)
+        
+//        reportForm.rx.tap.subscribe { _ in
+//            reportForm.datePicker.isHidden = true
+//            reportForm.datePicker.isUserInteractionEnabled = false
+//
+//            reportForm.saveBtn.isHidden = false
+//            reportForm.saveBtn.isUserInteractionEnabled = true
+//            reportForm.cancelBtn.isHidden = false
+//            reportForm.cancelBtn.isUserInteractionEnabled = true
+//        }.disposed(by: self.vm.bag)
         
         reportForm.datePicker.rx.value.bind { [weak self] _ in
             
