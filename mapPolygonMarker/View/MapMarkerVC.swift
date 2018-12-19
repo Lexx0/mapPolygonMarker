@@ -18,6 +18,8 @@ class MapMarkerVC: UIViewController {
     var vm: MapMarkerVM!
     var selectedMapType: GMSMapViewType = .normal
     
+//    var reportViewOrigin: CGFloat = self.view.frame.height*0.1 ?? (self.view.origin.y-100)
+    
     var locationManager: CLLocationManager!
     
     var locations: [CLLocation] = []
@@ -26,9 +28,14 @@ class MapMarkerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navSetup()
         locationSetup()
         floatySetup()
         gmapSetup()
+    }
+    
+    func navSetup() {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     func locationSetup() {
@@ -114,9 +121,9 @@ class MapMarkerVC: UIViewController {
             .instantiate(withOwner: self.view, options: nil)
             .first as! ShouldCreateDialogView
         
-        dialogView.frame.size.width = self.view.frame.width*0.85
+        dialogView.frame.size.width = self.view.frame.width*0.8
         dialogView.frame.origin.y = (self.view.frame.height*0.5) - 70
-        dialogView.frame.origin.x = dialogView.frame.width*0.15
+        dialogView.frame.origin.x = dialogView.frame.width*0.11
         
         dialogView.okBtn.rx.tap
             .subscribe { tap in
@@ -137,13 +144,18 @@ class MapMarkerVC: UIViewController {
     
     func createReport() {
         
+//        var myOrigin: CGFloat = self.view.frame.height*0.1 ?? self.view.frame.origin.y
+        
         let reportForm = UINib(nibName: "ReportForm", bundle: nil)
             .instantiate(withOwner: self, options: nil)
             .first as! ReportForm
         
         reportForm.frame.size.width = self.view.frame.width*0.8
         reportForm.frame.size.height = self.view.frame.height*0.8
+//        reportForm.frame.origin.y = self.reportViewOrigin //self.view.frame.height*0.1
+//        reportForm.frame.origin.y = self.view.frame.height*0.1 ?? self.view.frame.origin.y
         reportForm.frame.origin.y = self.view.frame.height*0.1
+        
         reportForm.frame.origin.x = self.view.frame.width*0.1
         
         reportForm.takeAphotoBtn.rx.tap
@@ -191,6 +203,28 @@ class MapMarkerVC: UIViewController {
         reportForm.cancelBtn.rx.tap.subscribe { tap in
             Floaty.global.show()
             reportForm.removeFromSuperview()
+        }.disposed(by: self.vm.bag)
+        
+        
+        reportForm.descrInput.rx.didBeginEditing.subscribe({ n in
+//            reportForm.descrInput.text = n
+
+            print("DSDSDSDSDSD!!!!")
+            reportForm.frame.origin.y -= 140
+        }).disposed(by: self.vm.bag)
+//        reportForm.descrInput.rx.didBeginEditing
+//            .map {
+//                return $0
+//            }
+//            .subscribe { _ in
+////        reportForm.descrInput.rx.didBeginEditing.subscribe { _ in
+//            reportForm.frame.origin.y -= 140
+////            reportForm.descrInput.text = ""
+//        }.disposed(by: self.vm.bag)
+        
+        reportForm.descrInput.rx.didEndEditing.subscribe { _ in
+//            reportForm.frame.origin.y = !reportForm.frame.origin.y
+            reportForm.frame.origin.y += 140
         }.disposed(by: self.vm.bag)
         
         self.view.addSubview(reportForm)
