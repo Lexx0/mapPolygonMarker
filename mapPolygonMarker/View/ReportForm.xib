@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ReportForm" customModule="mapPolygonMarker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="647"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wo-T7-QZt">
+                    <rect key="frame" x="154.5" y="62" width="64" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="NV1-9p-f3t"/>
+                        <constraint firstAttribute="width" constant="64" id="W5M-mu-RlJ"/>
+                    </constraints>
+                    <state key="normal" image="take-a-photo"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHK-g0-84Y">
+                    <rect key="frame" x="202.5" y="62" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="501-vi-KP2"/>
+                        <constraint firstAttribute="width" constant="16" id="b6r-cB-xTN"/>
+                    </constraints>
+                    <state key="normal" image="closeIcon"/>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="введите дату" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZOW-IC-GTX">
+                    <rect key="frame" x="42" y="158" width="289" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="L8O-RD-m40"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="введите описание" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mT3-QM-gCl">
+                    <rect key="frame" x="42" y="230" width="289" height="159"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eT-p4-6Ok">
+                    <rect key="frame" x="42" y="531" width="289" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="JSc-Ad-K7C"/>
+                    </constraints>
+                    <state key="normal" title="I"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-Wg-Qtr">
+                    <rect key="frame" x="42" y="589" width="289" height="42"/>
+                    <state key="normal" title="Button"/>
+                </button>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qq4-Eo-I9Z">
+                    <rect key="frame" x="0.0" y="431" width="373" height="216"/>
+                    <date key="date" timeIntervalSinceReferenceDate="566934875.23673105">
+                        <!--2018-12-19 17:54:35 +0000-->
+                    </date>
+                </datePicker>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0eT-p4-6Ok" secondAttribute="trailing" constant="42" id="4Lr-Qb-afN"/>
+                <constraint firstItem="9fy-Wg-Qtr" firstAttribute="top" secondItem="0eT-p4-6Ok" secondAttribute="bottom" constant="16" id="AhO-FM-BXh"/>
+                <constraint firstItem="9fy-Wg-Qtr" firstAttribute="height" secondItem="0eT-p4-6Ok" secondAttribute="height" id="H6N-vK-R0k"/>
+                <constraint firstItem="qq4-Eo-I9Z" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="LRQ-3o-kif"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mT3-QM-gCl" secondAttribute="trailing" constant="42" id="Rxm-Rk-e8r"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qq4-Eo-I9Z" secondAttribute="trailing" id="Uv6-B7-Pep"/>
+                <constraint firstItem="0eT-p4-6Ok" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="42" id="Xog-LD-hdV"/>
+                <constraint firstItem="9fy-Wg-Qtr" firstAttribute="width" secondItem="0eT-p4-6Ok" secondAttribute="width" id="YP4-yf-jSA"/>
+                <constraint firstItem="7wo-T7-QZt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="42" id="YaU-gv-ucy"/>
+                <constraint firstItem="mT3-QM-gCl" firstAttribute="top" secondItem="ZOW-IC-GTX" secondAttribute="bottom" constant="42" id="bnB-uq-lbD"/>
+                <constraint firstItem="qq4-Eo-I9Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f2e-DO-TkZ"/>
+                <constraint firstItem="mT3-QM-gCl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="42" id="g2C-Fg-30O"/>
+                <constraint firstItem="ZOW-IC-GTX" firstAttribute="top" secondItem="7wo-T7-QZt" secondAttribute="bottom" constant="32" id="hR4-mN-jvY"/>
+                <constraint firstItem="9fy-Wg-Qtr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hVu-Q2-wbd"/>
+                <constraint firstItem="ZOW-IC-GTX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="42" id="iZG-cM-YqH"/>
+                <constraint firstItem="7wo-T7-QZt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ijd-NM-wYy"/>
+                <constraint firstItem="UHK-g0-84Y" firstAttribute="top" secondItem="7wo-T7-QZt" secondAttribute="top" id="ljn-5K-roe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZOW-IC-GTX" secondAttribute="trailing" constant="42" id="oBG-te-pa8"/>
+                <constraint firstItem="UHK-g0-84Y" firstAttribute="trailing" secondItem="7wo-T7-QZt" secondAttribute="trailing" id="rT5-is-cLO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9fy-Wg-Qtr" secondAttribute="bottom" constant="16" id="v2P-2e-okF"/>
+                <constraint firstItem="qq4-Eo-I9Z" firstAttribute="top" secondItem="mT3-QM-gCl" secondAttribute="bottom" constant="42" id="x7v-wN-QTs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="cancelBtn" destination="9fy-Wg-Qtr" id="79v-f8-Mh3"/>
+                <outlet property="cancelImg" destination="UHK-g0-84Y" id="TmO-uC-KIl"/>
+                <outlet property="dateInPut" destination="ZOW-IC-GTX" id="p4S-Lt-f6f"/>
+                <outlet property="datePicker" destination="qq4-Eo-I9Z" id="sFJ-hm-uaf"/>
+                <outlet property="descrInput" destination="mT3-QM-gCl" id="bmh-0J-SaC"/>
+                <outlet property="saveBtn" destination="0eT-p4-6Ok" id="91l-N5-GrL"/>
+                <outlet property="takeAphotoBtn" destination="7wo-T7-QZt" id="a5x-GE-l7q"/>
+            </connections>
+            <point key="canvasLocation" x="136.80000000000001" y="145.27736131934034"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="closeIcon" width="11" height="11"/>
+        <image name="take-a-photo" width="60" height="60"/>
+    </resources>
+</document>

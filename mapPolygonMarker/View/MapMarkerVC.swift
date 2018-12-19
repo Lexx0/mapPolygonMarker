@@ -119,7 +119,7 @@ class MapMarkerVC: UIViewController {
         
         dialogView.okBtn.rx.tap
             .subscribe { tap in
-                print("TAAAP!")
+                self.createReport()
         }.disposed(by: self.vm.bag)
         
         dialogView.noBtn.rx.tap
@@ -130,6 +130,45 @@ class MapMarkerVC: UIViewController {
         
         self.view.addSubview(dialogView)
 //        view RXSwift
+    }
+    
+    func createReport() {
+        
+        let reportForm = UINib(nibName: "ReportForm", bundle: nil)
+            .instantiate(withOwner: self, options: nil)
+            .first as! ReportForm
+        
+        reportForm.frame.size.width = self.view.frame.width*0.8
+        reportForm.frame.size.height = self.view.frame.height*0.8
+        reportForm.frame.origin.y = self.view.frame.height*0.1
+        reportForm.frame.origin.x = self.view.frame.width*0.1
+        
+        reportForm.takeAphotoBtn.rx.tap
+            .subscribe { tap in
+                self.vm.presentActionSheet(vc: self)
+        }.disposed(by: self.vm.bag)
+        
+//        reportForm.dateInPut.inputView = reportForm.datePicker
+        reportForm.dateInPut.rx.controlEvent(UIControlEvents.editingDidBegin)
+            .subscribe{ _ in
+//                reportForm.dateInPut.rx.textInput = reportForm.datePicker
+                var dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd MMM yyyy"
+                reportForm.dateInPut.text = dateFormatter.string(from: reportForm.datePicker.date)
+                
+            }.disposed(by: self.vm.bag)
+//        UIControlEvents
+//            .disposed(by: self.vm.bag)
+        
+        reportForm.saveBtn.rx.tap.subscribe { tap in
+            self.vm.saveModel()
+        }.disposed(by: self.vm.bag)
+        
+        reportForm.cancelBtn.rx.tap.subscribe { tap in
+            reportForm.removeFromSuperview()
+        }
+        
+        self.view.addSubview(reportForm)
     }
     
 }
@@ -178,4 +217,10 @@ extension MapMarkerVC: GMSMapViewDelegate {
         marker.map = nil
         return true
     }
+}
+
+
+// image and camera pickers logic goes here
+extension MapMarkerVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 }

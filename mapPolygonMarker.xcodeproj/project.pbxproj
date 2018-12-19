@@ -15,6 +15,8 @@
 		BC9231E821CA7ED0000DF636 /* PolygonReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231E721CA7ED0000DF636 /* PolygonReportModel.swift */; };
 		BC9231EC21CA89BB000DF636 /* ShouldCreateDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9231EB21CA89BB000DF636 /* ShouldCreateDialogView.xib */; };
 		BC9231EE21CA89FB000DF636 /* ShouldCreateDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231ED21CA89FB000DF636 /* ShouldCreateDialogView.swift */; };
+		BC9231F021CABB96000DF636 /* ReportForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9231EF21CABB96000DF636 /* ReportForm.swift */; };
+		BC9231F221CABBAB000DF636 /* ReportForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9231F121CABBAB000DF636 /* ReportForm.xib */; };
 		BCECC5FE21C93277008D2E25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECC5FD21C93277008D2E25 /* AppDelegate.swift */; };
 		BCECC60321C93277008D2E25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCECC60121C93277008D2E25 /* Main.storyboard */; };
 		BCECC60621C93277008D2E25 /* mapPolygonMarker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BCECC60421C93277008D2E25 /* mapPolygonMarker.xcdatamodeld */; };
@@ -35,6 +37,8 @@
 		BC9231E721CA7ED0000DF636 /* PolygonReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonReportModel.swift; sourceTree = "<group>"; };
 		BC9231EB21CA89BB000DF636 /* ShouldCreateDialogView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShouldCreateDialogView.xib; sourceTree = "<group>"; };
 		BC9231ED21CA89FB000DF636 /* ShouldCreateDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShouldCreateDialogView.swift; sourceTree = "<group>"; };
+		BC9231EF21CABB96000DF636 /* ReportForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportForm.swift; sourceTree = "<group>"; };
+		BC9231F121CABBAB000DF636 /* ReportForm.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportForm.xib; sourceTree = "<group>"; };
 		BCECC5FA21C93277008D2E25 /* mapPolygonMarker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapPolygonMarker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCECC5FD21C93277008D2E25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCECC60221C93277008D2E25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				BC9231DF21C93964000DF636 /* MapMarkerVC.swift */,
 				BC9231EB21CA89BB000DF636 /* ShouldCreateDialogView.xib */,
 				BC9231ED21CA89FB000DF636 /* ShouldCreateDialogView.swift */,
+				BC9231EF21CABB96000DF636 /* ReportForm.swift */,
+				BC9231F121CABBAB000DF636 /* ReportForm.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 			files = (
 				BCECC60B21C9327B008D2E25 /* LaunchScreen.storyboard in Resources */,
 				BC9231EC21CA89BB000DF636 /* ShouldCreateDialogView.xib in Resources */,
+				BC9231F221CABBAB000DF636 /* ReportForm.xib in Resources */,
 				BCECC60821C9327B008D2E25 /* Assets.xcassets in Resources */,
 				BCECC60321C93277008D2E25 /* Main.storyboard in Resources */,
 			);
@@ -313,6 +320,7 @@
 				BC9231DE21C9393E000DF636 /* OriginalVC.swift in Sources */,
 				BC9231E621C94919000DF636 /* Constants.swift in Sources */,
 				BC9231EE21CA89FB000DF636 /* ShouldCreateDialogView.swift in Sources */,
+				BC9231F021CABB96000DF636 /* ReportForm.swift in Sources */,
 				BCECC5FE21C93277008D2E25 /* AppDelegate.swift in Sources */,
 				BC9231E221C93975000DF636 /* OriginalVM.swift in Sources */,
 			);
