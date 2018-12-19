@@ -158,6 +158,22 @@ class MapMarkerVC: UIViewController {
         
         reportForm.frame.origin.x = self.view.frame.width*0.1
         
+//        self.vm.storedImage.asObservable.subscribe { _ in
+//            reportForm.takeAphotoBtn
+//        }.disposed(by: self.vm.bag)
+        self.vm.storedImage.asObservable().subscribe{ imageChange in
+            reportForm.takeAphotoBtn.setImage(self.vm.storedImage.value, for: .normal)
+            
+            reportForm.cancelImg.isHidden = false
+            reportForm.cancelImg.isUserInteractionEnabled = true
+        }.disposed(by: self.vm.bag)
+        
+        reportForm.cancelImg.rx.tap.subscribe { _ in
+            self.vm.storedImage.value = UIImage(named: "take-a-photo")!
+            reportForm.cancelImg.isHidden = true
+            reportForm.cancelImg.isUserInteractionEnabled = false
+        }.disposed(by: self.vm.bag)
+        
         reportForm.takeAphotoBtn.rx.tap
             .subscribe { tap in
                 self.vm.presentActionSheet(vc: self)
@@ -209,9 +225,10 @@ class MapMarkerVC: UIViewController {
         reportForm.descrInput.rx.didBeginEditing.subscribe({ n in
 //            reportForm.descrInput.text = n
 
-            print("DSDSDSDSDSD!!!!")
-            reportForm.frame.origin.y -= 140
+            reportForm.frame.origin.y -= 160
+            reportForm.descrInput.text = ""
         }).disposed(by: self.vm.bag)
+        
 //        reportForm.descrInput.rx.didBeginEditing
 //            .map {
 //                return $0
@@ -224,7 +241,7 @@ class MapMarkerVC: UIViewController {
         
         reportForm.descrInput.rx.didEndEditing.subscribe { _ in
 //            reportForm.frame.origin.y = !reportForm.frame.origin.y
-            reportForm.frame.origin.y += 140
+            reportForm.frame.origin.y += 160
         }.disposed(by: self.vm.bag)
         
         self.view.addSubview(reportForm)
@@ -281,5 +298,15 @@ extension MapMarkerVC: GMSMapViewDelegate {
 
 // image and camera pickers logic goes here
 extension MapMarkerVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        
+        self.vm.storedImage.value = pickedImage
+        dismiss(animated: true, completion: nil)
+    }
     
 }

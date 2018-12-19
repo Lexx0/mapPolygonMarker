@@ -16,6 +16,8 @@ import RxCocoa
 final class MapMarkerVM {
     
     static let shared = MapMarkerVM()
+//    public var storedImage: UIImage? = UIImage(named: "take-a-photo")
+    let storedImage = Variable<UIImage>(UIImage(named: "take-a-photo")! )
     
     let bag = DisposeBag()
     
