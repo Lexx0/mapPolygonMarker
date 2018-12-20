@@ -11,21 +11,24 @@ import GoogleMaps
 import CoreLocation
 
 class PolygonReportModel {
-    var coordinates: [CLLocation]!
-    let path: GMSPath!
-    var photo: UIImage?
+    //var coordinates: [CLLocation]!
+    //var path: GMSPath!
+    var encodedPath: String!
+    var imageData: Data?
     var descr: String?
     var date: Date!
     
-    init(coordinates: [CLLocation],
-         path: GMSPath,
-         photo: UIImage,
+    init(/*coordinates: [CLLocation],*/
+         //path: GMSPath,
+         encodedPath: String,
+         imageData: Data,
          descr: String,
          date: Date) {
         
-        self.coordinates = coordinates
-        self.path = path
-        self.photo = photo
+        self.encodedPath = encodedPath
+        //self.coordinates = coordinates
+        //self.path = path
+        self.imageData = imageData
         self.descr = descr
         self.date = date
     }

@@ -9,15 +9,21 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
-
+import CoreData
 import RxSwift
 import RxCocoa
 
 final class MapMarkerVM {
     
     static let shared = MapMarkerVM()
-//    public var storedImage: UIImage? = UIImage(named: "take-a-photo")
+
     let storedImage = Variable<UIImage>(UIImage(named: "take-a-photo")! )
+    fileprivate var managedObjectContext: NSManagedObjectContext!
+    
+    var locations: [CLLocation] = []
+    var markerLocations: [CLLocation] = []
+    
+    var model: PolygonReportModel! // array for future getAllModels?
     
     let bag = DisposeBag()
     
@@ -31,11 +37,58 @@ final class MapMarkerVM {
         return todaysDate
     }
     
-    func saveModel() {
+    func getPath() -> GMSMutablePath {
+        let path = GMSMutablePath()
+        var currentIndex = 0
+        for item in self.markerLocations {
+            let tempItem = item
+            path.add(tempItem.coordinate)
+            currentIndex += 1
+            
+            if currentIndex == self.markerLocations.count {
+                let firstItem = self.markerLocations[0]
+                path.add(firstItem.coordinate)
+            }
+        }
+        return path
+    }
+    
+    func saveModel(_ date: Date, descr: String) {
+
+        let stringPath = self.getPath()
+        let encodedPath = stringPath.encodedPath()
+        let imageData = self.storedImage.value.pngData()!
         
+        let model = PolygonReportModel(encodedPath: encodedPath,
+                                       imageData: imageData,
+                                       descr: descr,
+                                       date: date)
+        self.model = model
+        
+        //saving to CoreData
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        self.managedObjectContext = appDelegate.persistentContainer.viewContext
+        let newsEntity = NSEntityDescription.entity(forEntityName: "PolygonReportModel", in: managedObjectContext)
+        
+        let storageItem = NSManagedObject(entity: newsEntity!, insertInto: self.managedObjectContext)
+        
+        storageItem.setValue(model.date, forKey: "date")
+        storageItem.setValue(model.descr!, forKey: "descr")
+        storageItem.setValue(model.encodedPath, forKey: "encodedPath")
+        storageItem.setValue(model.imageData, forKey: "imageData")
+        
+        do {
+            try self.managedObjectContext.save()
+            
+        } catch let error as NSError {
+            print("ERROR: ", error, "end user info: ", error.userInfo)
+        }
     }
     
     func getAllModels() {
+        //decode str to path
+//        let encodedString = model.encodedString
+//        let path = GMSPath(fromEncodedPath: encodedString)
         
     }
     

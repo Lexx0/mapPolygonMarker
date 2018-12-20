@@ -18,11 +18,7 @@ class MapMarkerVC: UIViewController {
     var vm: MapMarkerVM!
     var selectedMapType: GMSMapViewType = .normal
     
-    
     var locationManager: CLLocationManager!
-    
-    var locations: [CLLocation] = []
-    var markerLocations: [CLLocation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,22 +47,10 @@ class MapMarkerVC: UIViewController {
         Floaty.global.button.addItem("Draw PolyGone", icon: UIImage(named: "document-add")) { tap in
             
             guard let mapView = self.view as? GMSMapView else  { return }
-            var currentIndex = 0
             
-            let path = GMSMutablePath()
+            let path = self.vm.getPath()
             
-            for item in self.markerLocations {
-                let tempItem = item
-                path.add(tempItem.coordinate)
-                currentIndex += 1
-                
-                if currentIndex == self.markerLocations.count {
-                    let firstItem = self.markerLocations[0]
-                    path.add(firstItem.coordinate)
-                }
-            }
-            
-            let canCreateReport = self.vm.checkIfUserWithinLocation(self.locations.last!, polygon: path)
+            let canCreateReport = self.vm.checkIfUserWithinLocation(self.vm.locations.last!, polygon: path)
             
             if canCreateReport == true {
                 
@@ -81,12 +65,12 @@ class MapMarkerVC: UIViewController {
         
         Floaty.global.button.addItem("Clear Markers", icon: UIImage(named: "wiping")) { tap in
             guard let mapView = self.view as? GMSMapView else  { return }
-            self.markerLocations.removeAll()
+            self.vm.markerLocations.removeAll()
             mapView.clear()
         }
         
         Floaty.global.button.addItem("View List", icon: UIImage(named: "view-list")) { tap in
-            print("List Tapped")
+            self.vm.getAllModels()
         }
         
         Floaty.global.button.openAnimationType = .slideLeft
@@ -97,8 +81,8 @@ class MapMarkerVC: UIViewController {
     
     func gmapSetup() {
         
-        let camera = GMSCameraPosition.camera(withLatitude: self.locations.first?.coordinate.latitude ?? 49.0391,
-                                              longitude: self.locations.first?.coordinate.longitude ?? 28.1086,
+        let camera = GMSCameraPosition.camera(withLatitude: self.vm.locations.first?.coordinate.latitude ?? 49.0391,
+                                              longitude: self.vm.locations.first?.coordinate.longitude ?? 28.1086,
                                               zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.mapType = self.selectedMapType
@@ -197,7 +181,9 @@ class MapMarkerVC: UIViewController {
         }.disposed(by: self.vm.bag)
         
         reportForm.saveBtn.rx.tap.subscribe { tap in
-            self.vm.saveModel()
+            self.vm.saveModel(reportForm.datePicker!.date,
+                              descr: reportForm.descrInput.text)
+            print("DATE??", reportForm.datePicker!.date)
             Floaty.global.show()
             reportForm.removeFromSuperview()
         }.disposed(by: self.vm.bag)
@@ -228,7 +214,7 @@ extension MapMarkerVC: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.first!
-        self.locations.append(location)
+        self.vm.locations.append(location)
     }
 }
 
@@ -248,7 +234,7 @@ extension MapMarkerVC: GMSMapViewDelegate {
         
             let locationNew = CLLocation(latitude: coordinate.latitude,
                                          longitude: coordinate.longitude)
-            self.markerLocations.append(locationNew)
+            self.vm.markerLocations.append(locationNew)
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
@@ -257,9 +243,9 @@ extension MapMarkerVC: GMSMapViewDelegate {
         
         var index = 0
 
-        for item in self.markerLocations {
+        for item in self.vm.markerLocations {
             if (item.coordinate.latitude == marker.position.latitude) && (item.coordinate.longitude == marker.position.longitude) {
-                self.markerLocations.remove(at: index)
+                self.vm.markerLocations.remove(at: index)
             }
             index += 1
         }
