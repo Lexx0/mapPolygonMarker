@@ -47,19 +47,14 @@ class MapMarkerVC: UIViewController {
         Floaty.global.button.addItem("Draw PolyGone", icon: UIImage(named: "document-add")) { tap in
             
             guard let mapView = self.view as? GMSMapView else  { return }
-            
             let path = self.vm.getPath()
-            
             let canCreateReport = self.vm.checkIfUserWithinLocation(self.vm.locations.last!, polygon: path)
             
             if canCreateReport == true {
-                
                 self.awakeDialog()
-        
             }
             
             let rectangle = GMSPolyline(path: path)
-        
             rectangle.map = mapView
         }
         
@@ -93,7 +88,6 @@ class MapMarkerVC: UIViewController {
         
         mapView.delegate = self
         self.view = mapView
-        
     }
     
     func awakeDialog() {
@@ -239,7 +233,10 @@ extension MapMarkerVC: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
-        // load nib with action options ??
+        /*?? load nib with action options
+        that includes all the possible manipulations with existing polyGon,
+         such as: edit, add photo, etc
+        */
         
         var index = 0
 
