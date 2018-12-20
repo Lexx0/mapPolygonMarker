@@ -1,0 +1,6 @@
+framework module Pods_mapPolygonMarker {
+  umbrella header "Pods-mapPolygonMarker-umbrella.h"
+
+  export *
+  module * { export * }
+}
